@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LET'S BE A FRIEND</title>
+    <style>
+        body {
+            position: relative;
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            background-image: url('./img6.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: grayscale(0);
+            opacity: .7;
+        }
+
+        .friendship {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: all 1s ease;
+
+        }
+
+        .friendship h1 {
+            font-size: 106px;
+            font-weight: bold;
+            color: palevioletred;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-image: url("https://cdn.pixabay.com/photo/2019/01/10/19/36/frame-3925925_640.jpg");
+            background-repeat: repeat;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* background-size: cover; */
+            filter: drop-shadow(5px 5px 6px black);
+            background-position: top;
+            text-align: center;
+        }
+
+        .friendship h1 span {
+            font-size: 206px;
+            color: rgb(44, 78, 44);
+        }
+
+        .friendship img {
+            position: absolute;
+            width: 186px;
+            left: 2096px;
+            top: 491px;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 10px 20px;
+            color: palevioletred;
+            border-radius: 20px;
+            border: 1px solid pink;
+            font-size: 36px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+            transition: all 1s ease;
+        }
+
+        #demo2 {
+            font-size: 46px;
+            color: palevioletred;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #dmeo3 img {
+            width: 200px;
+            height: 600px;
+        }
+
+        #no-button {
+            transition: all .2s ease;
+
+        }
+
+        #img {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            z-index: 9;
+        }
+
+        #img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #div1 {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
+        }
+
+        #div1 p {
+            font-size: 108px;
+            text-align: center;
+            font-weight: 800;
+            color: palevioletred;
+        }
+
+        /* On screens that are 992px or less, set the background color to blue */
+        @media screen and (max-width: 992px) {
+
+            .friendship h1 {
+                font-size: 56px;
+            }
+
+            .friendship h1 span {
+                font-size: 96px;
+            }
+
+            .background {
+                height: 20vh !important;
+            }
+
+            #div1 p {
+                font-size: 80px;
+            }
+        }
+
+        /* On screens that are 600px or less, set the background color to olive */
+        @media screen and (max-width: 600px) {}
+    </style>
+</head>
+
+<body>
+    <div id="img">
+        <img src="./video.gif" alt="">
+    </div>
+    <div id="div1"></div>
+    <div class="background" id="backgorund-layer">
+        <img src="./img6.png" alt="">
+    </div>
+    <div class="friendship" id="top-layer">
+        <h1 id="heading">Whould you like to be my Friend <br><span>Arthy</span><span></span> </h1>
+        <div class="buttons">
+            <button id="yes-button">YES</button>
+            <button id="no-button" onmouseover="mouseEnter(this)" onmouseleave="mouseLeave(this)">NO</button>
+        </div>
+        <p id="demo"></p>
+        <div id="demo2"></div>
+        <div id="demo3">
+            <img src="https://media.tenor.com/mZNbvmNhm-0AAAAi/emoji-smiley.gif" alt="">
+        </div>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        // const demo = document.getElementById('demo');
+        const topLayer = document.getElementById('top-layer');
+        const backgroundLayer = document.getElementById('backgorund-layer');
+        const img = document.getElementById('img');
+        var i = -1;
+        var cnt = 0;
+        var arr = ["Hey 🤷‍♂️", "No Click Pana Kudathu 🤞", "Parra 😶", "Sorry loosu ❤️", "kalnenjakari 😖", "Ada Accept Pannikaven 😏", "Ivlo Kenjaren la 😤", "N8 Rombaneram Kan Mulichi Panathu mental 🤒", "Shabhaaaaa 😩", "Ithu Sari Pattu Varathu 😠", "Cheri No Vea Click Panika 😒", "NO"]
+
+        yesButton.addEventListener("click", accepted);
+
+        noButton.addEventListener("click", () => {
+            i++;
+            if (i < arr.length) {
+                noButton.innerHTML = arr[i];
+            }
+        })
+
+        function mouseEnter(event) {
+            if (i >= arr.length) {
+                cnt++;
+                noButton.style.transform = 'translateX(300%)';
+                if (cnt > 10) {
+                    noButton.innerHTML = '🤭🤭'
+                }
+            }
+        }
+
+        function mouseLeave(event) {
+            if (i >= arr.length) {
+                setTimeout(() => {
+                    noButton.style.transform = 'translateX(0)';
+                }, 100);
+            }
+        }
+
+        function accepted() {
+            img.style.display = 'block';
+            setTimeout(() => {
+                topLayer.remove();
+                backgroundLayer.remove();
+                const para = document.createElement('p');
+                const node = document.createTextNode("THANK YOU 😍");
+                para.appendChild(node);
+                const element = document.getElementById("div1");
+                element.appendChild(para);
+            }, 500);
+
+            setTimeout(() => {
+                img.style.display = 'none';
+            }, 1500);
+        }
+
+    </script>
+</body>
+
+</html>
